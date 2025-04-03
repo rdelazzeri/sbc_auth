@@ -26,17 +26,12 @@
     <div class="container-fluid" >
       <nav class="navbar sticky-top">
         <img src="/static/core/sobcontrole.png" class= 'nav-logo' id="nav-logo" alt="Logotipo" >
-        <button class="btn btn-sm btn-outline-secondary toggle-btn" id="btn-toggle" onclick="toggleSidebar()"><i class="bi bi-x"></i></button>
-        <span class="navbar-brand mb-0 h1">Sob Controle</span>
-        <div id="user-data" hx-get="/user-data" hx-trigger="load"></div>
       </nav>
       <div class="row flex-nowrap">
-        <div class="col-auto">
-          <div hx-get="/side_menu" hx-trigger="load"></div>
-        </div>
         <main class="col ps-sm-1 pt-0">
           <div class="content" id="content">{% block content %}{% endblock content %}</div>
         </main>
+      </div> 
     </div>
 
 

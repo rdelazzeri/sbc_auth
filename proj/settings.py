@@ -42,20 +42,14 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'autocomplete',
-    'django_htmx',
+    #'django_htmx',
     'django_filters',
     'django_tables2',
+    'django_sso.sso_gateway',
 
     #apps do projeto
-    'apps.sbc_auth',
-    'apps.tenant',
+    'apps.sbc_user',
     'apps.core',
-    'apps.accounting',
-    'apps.finance',
-    'apps.items',
-    'apps.partners',
-    'apps.commercial',
-
 ]
 
 
@@ -73,8 +67,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'django_htmx.middleware.HtmxMiddleware',
-    #'apps.tenant.middleware.TenantMiddleware',
 ]
 
 ROOT_URLCONF = 'proj.urls'
@@ -156,15 +148,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ##personal settings
 # -----------------------------------------------------
 # ----------------------------------------------------- 
-AUTH_USER_MODEL = 'sbc_auth.User'  # Update this to point to your custom user model
-LOGIN_URL = 'sbc_auth:login',
-BY_PASS_TENANT = [
-    '/auth/login/', 
-    '/auth/create-user',
-    '/auth/create-user/', 
-    '/auth/create-user-success/', 
-    '/admin/',
-    'admin', 
-    'auth',
-    'core',
-    ]
+AUTH_USER_MODEL = 'sbc_user.User'  # Update this to point to your custom user model
+#LOGIN_URL = 'sbc_user:login',
+
+
+
+##SSO
+# Affects to the "welcome" url (after successful authentication) when
+# user logged in but don't have url to redirect. Optional.
+# Compatible logic with Django.
+LOGIN_REDIRECT_URL = '/core/welcome/'

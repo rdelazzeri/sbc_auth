@@ -1,8 +1,9 @@
 Django==4.2.16
-django-htmx
+#django-htmx
 django-htmx-autocomplete
 django-crispy-forms
 crispy-bootstrap5
 django-ulid
 django-tables2
 django-filter
+django-sso==3.0.2

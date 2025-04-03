@@ -1,13 +1,12 @@
 from django.db import models
 #from django.contrib.auth.models import User
-from apps.sbc_auth.models import User
+from apps.sbc_user.models import User
 from threading import local
 from django.utils.translation import gettext_lazy as _
-from apps.tenant.models import Tenant, BaseTenantModel
 
 
 
-class BaseModel(BaseTenantModel): 
+class BaseModel(models.Model): 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name='%(class)s_created_by', null=True, blank=True,)
