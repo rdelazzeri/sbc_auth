@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load autocomplete %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+<div class="card" id="main-div">
+    <div class="card-header d-flex justify-content-between">
+        <h3>{% trans 'Partner' %}</h3>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="submit" class="btn btn-outline-primary" form="new-partner-form">{% trans 'Save' %}</button>
+            <button 
+                type="button" 
+                class="btn btn-outline-primary"
+                hx-get="{% url 'partner:partner_list' %}" 
+                hx-push-url="true"
+                hx-select="#main-div" 
+                hx-target="#content" 
+                hx-swap="innerHTML" 
+                hx-disabled-elt="find button"
+                hx-indicator="#spinner"
+                hx-target-5*="#error500"
+                hx-target-404="#error400" 
+                > 
+                {% trans 'Search' %}
+            </button>
+            <button 
+                type="button" 
+                class="btn btn-outline-primary"
+                hx-get="{% url 'partner:partner_new' %}"
+                hx-trigger="click"
+                hx-push-url="true" 
+                hx-select="#main-div"
+                hx-target="#content"
+                hx-swap="innerHTML"
+                hx-target="#response-div"
+                hx-disabled-elt="find button"
+                hx-indicator="#spinner"
+                hx-target-5*="#error500"
+                hx-target-404="#error400"  
+                >{% trans 'New' %}
+            </button>
+            <button
+                hx-trigger="click" 
+                hx-get="{% url 'partner:partner_type_modal_new' %}" 
+                hx-target="#base-modal"
+                data-bs-toggle="modal"
+                data-bs-target="#base-modal" 
+                class="btn btn-outline-primary" 
+                type="button">
+                New Type
+            </button>
+
+
+        </div>
+    </div>
+  
+    <div class="card_body">
+        {% crispy form %}
+    </div>
+</div> 
+
+
+
+
+{% endblock %}
