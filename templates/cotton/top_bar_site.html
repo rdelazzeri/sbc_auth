@@ -1,0 +1,12 @@
+<nav class="navbar-expand-lg navbar">
+    <a class="navbar-brand" href="/">
+        <img src="/static/core/sobcontrole.png" class= 'nav-logo' id="nav-logo" alt="SobControle" >
+    </a>
+    <div class="navbar justify-content-end" id="topnavbar">
+        <ul class="navbar-nav">
+            <li><a href="{% url 'account_login' %}" class="nav-link link-secondary link-opacity-50-hover ">Sign In</a></li>
+            <li><a href="{% url 'account_signup' %}" class="nav-link link-secondary link-opacity-50-hover ">Sign Up</a></li>
+            <li><a href="{% url 'account_logout' %}" class="nav-link link-secondary link-opacity-50-hover ">Logout</a></li>
+        </ul>
+    </div>
+</nav>

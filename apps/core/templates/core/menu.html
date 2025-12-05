@@ -1,51 +1,24 @@
 {% load static %}
-   
-    <div class="sidebar" id="sidebar">
-        <nav class="nav flex-column" id="menu">
+
+        <nav class="sidebar nav flex-column" id="sidebar">
             {% for m in menu %}
                 {% if m.children %}
                     <li class="nav-item">
-                        <a href="#{{m.text}}" data-bs-toggle="collapse" class="nav nav-link">
+                        <a href="#{{m.text}}" data-bs-toggle="collapse" class="nav nav-link link-secondary link-opacity-50-hover">
                             <i class="{{m.image}}"></i> <span class="ms-1 d-none d-sm-inline">{{m.text}}</span> </a>
                             <nav class="collapse nav-item flex-column" id="{{m.text}}" data-bs-parent="#menu">
                                 {% for ch in m.children %}
-                                    <li>
-                                        <a href="{{ch.link}}" class="olink nav-link "
-                                            hx-get="{{ch.link}}"
-                                            hx-trigger="click"
-                                            hx-push-url="true" 
-                                            hx-select="#main-div"
-                                            hx-target="#content"
-                                            hx-swap="innerHTML"
-                                            hx-disabled-elt="find button"
-                                            hx-target-5*="#error500"
-                                            hx-target-404="#error400">
-                                        > <span class=""></span>{{ch.text}}</a>
-                                    </li>
+                                    <c-sidebar_link class="px-4" link="{{ch.link}}" text="{{ch.text}}"></c-sidebar_link>
                                 {% endfor %}
-                                </nav>
+                            </nav>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0"
-                            hx-get="{{m.link}}"
-                            hx-trigger="click"
-                            hx-push-url="true" 
-                            hx-select="#main-div"
-                            hx-target="#content"
-                            hx-swap="innerHTML"
-                            hx-disabled-elt="find button"
-                            hx-target-5*="#serious-errors"
-                            hx-target-404="#not-found">
-
-                            >
-                            <i class="{{ m.image }}"></i> <span class="ms-1 d-none d-sm-inline">{{m.text}}</span>
-                        </a>
+                        <c-sidebar_link icon="{{ m.image }}" link="{{ m.link }}" text="{{ m.text }}"></c-sidebar_link>
                     </li>
                 {% endif %}
             {% endfor %}
-                </nav>
-    </div>
+        </nav>
+    
 
-    <script src="{% static 'js/sbc-0.3.js' %}"></script>
 

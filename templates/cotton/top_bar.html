@@ -1,0 +1,28 @@
+<nav class="topbar navbar-expand-lg navbar">
+    <button class="toggle-btn btn btn-outline-secondary" id="btn-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-times fa-lg"></i>
+    </button>
+
+    <a class="navbar-brand" href="/">
+        <img src="/static/core/sobcontrole.png" class= 'nav-logo' id="nav-logo" alt="SobControle" >
+    </a>
+
+
+
+
+
+    <div class="collapse navbar-collapse justify-content-end" id="topnavbar">
+        <ul class="navbar-nav">
+            <c-sidebar_link link="{% url 'account_logout' %}" text="Sign In"></c-sidebar_link>
+
+        </ul>
+    </div>
+
+
+
+
+
+
+
+    
+</nav>

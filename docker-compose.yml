@@ -1,17 +1,26 @@
-version: '3.8'
-
 services:
   web:
     build: .
+    container_name: django_auth
+    restart: unless-stopped
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/usr/src/app/
+      #  - .:/app # Mount current directory to /app in the container
+      - sbc_auth:/app/volume
+
     ports:
-      - 8001:8001
+      - "8000:8000"
+    env_file: 
+      - .env
+
+    environment:
+      - PYTHONUNBUFFERED=1 # Ensures Python output is sent straight to the terminal
+
     networks:
-      - myapp-net
+      - sbc_network
 
 networks:
-  myapp-net:
-    external: true
+  sbc_network:
 
+volumes:
+  sbc_auth:

@@ -1,0 +1,17 @@
+
+<li class="nav-item">
+    <a href="#{{ text }}" data-bs-toggle="collapse" class="nav nav-link link-secondary link-opacity-50-hover">
+        {% if icon %}
+            <i class="{{ icon }}"></i> <span class="ms-1 d-none d-sm-inline">{{ text }}</span>
+        {% else %}
+            <span class=""></span>{{text}}
+        {% endif %}
+    </a>
+        {% if children %}
+            <nav class="collapse nav-item flex-column" id="{{m.text}}" data-bs-parent="#menu">
+                {% for ch in children %}
+                    {{<c-sidebar_link link="{{ch.link}}" text="{{ch.text}}"></c-sidebar_link>}}
+                {% endfor %}
+            </nav>
+        {% endif %}
+</li>

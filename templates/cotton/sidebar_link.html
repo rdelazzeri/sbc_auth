@@ -1,0 +1,23 @@
+<li>
+    <a href="{{link}}" class="nav-link link-secondary link-opacity-50-hover {{ class }}"
+        hx-get="{{ link }}"
+        hx-trigger="click"
+        hx-push-url="true" 
+        hx-target="#content"
+        hx-swap="innerHTML"
+        hx-target-5*="#error500"
+        hx-target-404="#error400"
+        {% if hx_select %}
+            hx-select="{{ hx_select }}"
+        {% else %}
+            hx-select="#main-div"
+        {% endif %}
+        >
+        {% if icon %}
+            <i class="{{ icon }}"></i> <span class="ms-1 d-none d-sm-inline">{{ text }}</span>
+        {% else %}
+            <span class="">{{text}}</span>
+        {% endif %}
+        </a>
+</li>
+

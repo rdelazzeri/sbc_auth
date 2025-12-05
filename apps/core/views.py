@@ -7,12 +7,17 @@ from django.utils.translation import gettext as _
 
 class Index(TemplateView):
     template_name = 'core/index.html'
+    
+
+class Dashboard(TemplateView):
+    template_name = 'core/dashboard.html'
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         data = super().get_context_data(**kwargs)
-        #data['custom_css'] = '/static/blue-voltage.css'
+        #data['custom_css'] = '/static/css/flatly_bootstrap.min.css'
         return data
-    
+
+
 
 class UserData(TemplateView):
     template_name = 'core/user_data.html'
@@ -29,7 +34,8 @@ class UserData(TemplateView):
 
 
 class TestMenu(TemplateView):
-    template_name = 'core/menu.html'
+    template_name = 'core/test_content.html'
+
 
 class SideMenu(TemplateView):
     template_name = 'core/menu.html'
@@ -46,8 +52,8 @@ class SideMenu(TemplateView):
                 'image': 'fa fa-users',
                 'children':[
                     {
-                        'link': '/part/partners',
-                        'text': _('Partners'),
+                        'link': '/test',
+                        'text': _('Test Loren'),
                     },
                     {
                         'link': '/part/partner/new',
